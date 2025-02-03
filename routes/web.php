@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MerchantController;
 
+
+Route::get('/', function () {
+    return view('merchant/register');
+});
+
+
 Route::prefix('merchant')->group(function () {
     Route::get('/register', [MerchantController::class, 'showRegisterForm'])->name('merchant.register');
     Route::post('/register', [MerchantController::class, 'register']);

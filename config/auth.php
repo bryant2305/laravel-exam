@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'merchant' => [  // Agregar este guardia
+        'driver' => 'session',
+        'provider' => 'merchants',
+    ],
     ],
 
     /*
@@ -65,6 +69,12 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class ,),
             
         ],
+
+        'merchants' => [  // Agregar este provider
+            'driver' => 'eloquent',
+            'model' => App\Models\Merchant::class,
+        ],
+    
 
         // 'users' => [
         //     'driver' => 'database',
