@@ -44,6 +44,10 @@ return [
         'driver' => 'session',
         'provider' => 'merchants',
     ],
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ],
     ],
 
     /*
@@ -75,6 +79,10 @@ return [
             'model' => App\Models\Merchant::class,
         ],
     
+        'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class,
+    ],
 
         // 'users' => [
         //     'driver' => 'database',

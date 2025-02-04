@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('merchant/register');
@@ -32,3 +33,13 @@ Route::prefix('merchant')->group(function () {
         Route::post('/products', [ProductController::class, 'store'])->name('merchant.products.store');
     });
 });
+
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [AdminController::class, 'login']);
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/merchants', [AdminController::class, 'index'])->name('admin.merchants.index');
+    });
+});
+
