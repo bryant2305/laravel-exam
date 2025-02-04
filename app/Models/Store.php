@@ -15,5 +15,10 @@ class Store extends Model
     {
         return $this->belongsTo(Merchant::class);
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
 

@@ -23,6 +23,20 @@
           @enderror
         </div>
         
+        <div class="mb-6">
+          <label for="store_id" class="block text-sm font-medium text-gray-700">Select Store</label>
+          <select id="store_id" name="store_id" 
+                  class="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="" disabled selected>Select a store</option>
+            @foreach($stores as $store)
+              <option value="{{ $store->id }}">{{ $store->name }}</option>
+            @endforeach
+          </select>
+          @error('store_id')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+          @enderror
+        </div>
+
         <input type="hidden" name="merchant_id" value="{{ Auth::id() }}">
 
         <button type="submit" 
