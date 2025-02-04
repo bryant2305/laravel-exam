@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
 class MerchantController extends Controller
 {
     public function showRegisterForm() {
@@ -17,6 +18,7 @@ class MerchantController extends Controller
     public function register(Request $request) {
         $request->validate([
             'name' => 'required',
+            'shop_name' => 'required',
             'email' => 'required|email|unique:merchants,email',
             'password' => 'required|min:6',
         ]);
@@ -24,6 +26,7 @@ class MerchantController extends Controller
         Merchant::create([
             'name' => $request->name,
             'email' => $request->email,
+            'shop_name' => $request->shop_name,
             'password' => Hash::make($request->password),
         ]);
 
