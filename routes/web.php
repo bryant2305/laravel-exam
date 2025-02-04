@@ -1,14 +1,12 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\MerchantController;
-
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('merchant/register');
 });
-
 
 Route::prefix('merchant')->group(function () {
     Route::get('/register', [MerchantController::class, 'showRegisterForm'])->name('merchant.register');
@@ -22,6 +20,15 @@ Route::prefix('merchant')->group(function () {
         Route::get('/store-list', [MerchantController::class, 'storeList'])->name('merchant.store.list');
         Route::get('/create-store', [MerchantController::class, 'showCreateStore'])->name('merchant.store.create');
         Route::post('/create-store', [MerchantController::class, 'createStore']);
+
+        // Rutas de Categorías (requieren autenticación)
+        Route::get('/categories', [CategoryController::class, 'index'])->name('merchant.categories.index');
+        Route::get('/categories/create', [CategoryController::class, 'create'])->name('merchant.categories.create');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('merchant.categories.store');
+
+        // Rutas de Productos (requieren autenticación)
+        Route::get('/products', [ProductController::class, 'index'])->name('merchant.products.index');
+        Route::get('/products/create', [ProductController::class, 'create'])->name('merchant.products.create');
+        Route::post('/products', [ProductController::class, 'store'])->name('merchant.products.store');
     });
 });
-
