@@ -4,6 +4,7 @@ use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StoreController;
 
 Route::get('/', function () {
     return view('merchant/register');
@@ -42,4 +43,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/merchants', [AdminController::class, 'index'])->name('admin.merchants.index');
     });
 });
+
+Route::get('/shop/{shop}', [StoreController::class, 'show'])->name('shop.show');
+
 
