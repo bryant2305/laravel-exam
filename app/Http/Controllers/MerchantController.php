@@ -47,7 +47,7 @@ class MerchantController extends Controller
             return redirect()->route('merchant.dashboard');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
 
     public function dashboard() {

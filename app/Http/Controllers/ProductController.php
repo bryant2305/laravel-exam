@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    // Lista todos los productos del merchant autenticado
+    
     public function index()
     {
         $products = Product::where('merchant_id', Auth::id())->with('category')->get();
         return view('merchant.products.index', compact('products'));
     }
     
-    // Muestra el formulario para crear un nuevo producto
+  
     public function create()
     {
         // Para el select de categorías, solo se muestran las del merchant
@@ -24,7 +24,7 @@ class ProductController extends Controller
         return view('merchant.products.create', compact('categories'));
     }
     
-    // Guarda el nuevo producto
+    
     public function store(Request $request)
     {
         $request->validate([

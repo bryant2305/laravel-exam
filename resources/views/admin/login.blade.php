@@ -13,9 +13,16 @@
 
             <form action="{{ route('admin.login') }}" method="POST">
                 @csrf
+                <!-- Mostrar el error si existe -->
+                @if ($errors->has('email'))
+                    <div class="mb-4 text-red-500 text-sm">
+                        {{ $errors->first('email') }}
+                    </div>
+                @endif
+
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="email" name="email" 
+                    <input type="email" id="email" name="email" value="{{ old('email') }}"
                            class="w-full mt-2 px-4 py-3 border border-gray-300 rounded-md">
                 </div>
 
