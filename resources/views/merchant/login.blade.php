@@ -15,6 +15,13 @@
             <form action="{{ route('merchant.login') }}" method="POST">
                 @csrf
 
+                <!-- Mostrar el error si existe -->
+                @if ($errors->has('email'))
+                    <div class="mb-4 text-red-500 text-sm">
+                        {{ $errors->first('email') }}
+                    </div>
+                @endif
+                
                 <div class="mb-6">
                     <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" 

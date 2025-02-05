@@ -28,6 +28,7 @@ public function login(Request $request)
         return redirect()->route('admin.merchants.index');
     }
 
-    return back()->withErrors(['email' => 'Invalid credentials']);
+    // Redirigir de nuevo con los errores
+    return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
 }
 }
