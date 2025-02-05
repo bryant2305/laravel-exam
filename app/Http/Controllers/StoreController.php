@@ -9,8 +9,8 @@ class StoreController extends Controller
 {
     public function show($shop)
     {
-        $store = Store::where('name', $shop)->firstOrFail(); // Buscar la tienda por nombre
-        $categories = $store->categories()->with('products')->get(); // Obtener categorías con productos
+        $store = Store::where('name', $shop)->firstOrFail(); 
+        $categories = $store->categories()->with('products')->get(); 
 
         return view('shop.show', compact('store', 'categories'));
     }
